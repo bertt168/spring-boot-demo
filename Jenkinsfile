@@ -7,7 +7,11 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'mvn -B -DskipTests clean package'
+                //如果是mac
+                //sh 'mvn -B -DskipTests clean package'
+
+                //如果是window
+                bat 'mvn -B -DskipTests clean package'
             }
         }
     }
