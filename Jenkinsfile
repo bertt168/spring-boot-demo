@@ -12,6 +12,9 @@ pipeline {
             }
         }
         stage('Build') {
+            when {
+                branch 'master'
+            }
             steps {
                 echo 'clean package 先清除再打包'
                 echo '-DskipTests 跳過測試'
