@@ -1,34 +1,20 @@
 pipeline {
     agent any
-    tools {
-        maven 'maven 3.8.2'
-        jdk 'JDK 1.8'
-    }
+
     stages {
-        stage('check env') {
-            steps {
-                bat 'mvn -v'
-                bat 'java -version'
-            }
-        }
         stage('Build') {
             steps {
-                //如果是mac
-                //sh 'mvn -B -DskipTests clean package'
-
-                //如果是window
-                bat 'mvn -B -DskipTests clean package'
+                echo 'Building..'
             }
         }
         stage('Test') {
             steps {
-                bat 'mvn test'
-                //sh 'mvn test'
+                echo 'Testing..'
             }
-            post {
-                always {
-                    junit 'target/surefire-reports/*.xml'
-                }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
             }
         }
     }
