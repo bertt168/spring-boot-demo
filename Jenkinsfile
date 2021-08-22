@@ -20,20 +20,20 @@ pipeline {
                 //sh 'mvn -B -DskipTests clean package'
 
                 //如果是window
-                bat 'mvn -B clean package'
+                bat 'mvn -B -DskipTests clean package'
             }
         }
-//         stage('Test') {
-//             steps {
-//                 bat 'mvn test'
-//                 //sh 'mvn test'
-//             }
-//             post {
-//                 always {
-//                     junit 'target/surefire-reports/*.xml'
-//                 }
-//             }
-//         }
+        stage('Test') {
+            steps {
+                bat 'mvn test'
+                //sh 'mvn test'
+            }
+            post {
+                always {
+                    junit 'target/surefire-reports/*.xml'
+                }
+            }
+        }
 
         stage('Deliver') {
             steps {
