@@ -6,8 +6,10 @@ pipeline {
     }
     stages {
         stage('check env') {
-            bat 'mvn -v'
-            bat 'java -version'
+            steps {
+                bat 'mvn -v'
+                bat 'java -version'
+            }
         }
         stage('Build') {
             steps {
