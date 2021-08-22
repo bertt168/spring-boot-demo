@@ -1,13 +1,8 @@
 pipeline {
-    agent {
-        // Equivalent to "docker build -f Dockerfile.build --build-arg version=1.0.2 ./build/
-        dockerfile {
-            filename 'Dockerfile.build'
-            dir 'build'
-            label 'spring-boot-demo'
-            additionalBuildArgs  '--build-arg version=1.0.2'
-            args '-v /tmp:/tmp'
-        }
+    agent any
+    tools {
+        maven 'maven 3.8.2'
+        jdk 'JDK 1.8'
     }
     stages {
         stage('check env') {
