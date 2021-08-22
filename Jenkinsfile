@@ -25,28 +25,10 @@ pipeline {
                 bat 'mvn test'
                 //sh 'mvn test'
             }
-//             看起來需額外安裝junit plugin 先略過
-//             post {
-//                 always {
-//                     junit 'target/surefire-reports/*.xml'
-//                 }
-//             }
-        }
-        stage('Artifact') {
-            step([$class: 'ArtifactArchiver', artifacts: '**/target/*.jar', fingerprint: true])
-
-            try{
-                stage 'Approve, go production'
-                def url = 'http://localhost:8081/'
-                input message: "Does staging at $url look good? ", ok: "Deploy to production"
-            }finally{
-                bat "ssh jenkins@localhost 'kill `cat deploy/release/run.pid`'"
-            }
-        }
-
-        stage('deploy') {
-            steps {
-                bat 'make deploy-default'
+            post {
+                always {
+                    junit 'target/surefire-reports/*.xml'
+                }
             }
         }
     }
