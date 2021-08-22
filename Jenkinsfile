@@ -8,7 +8,7 @@ pipeline {
         stage('Build') {
             steps {
                 //如果是mac
-                sh 'mvn -B -DskipTests clean package'
+                //sh 'mvn -B -DskipTests clean package'
 
                 //如果是window
                 //bat 'mvn -B -DskipTests clean package'
@@ -16,7 +16,8 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'mvn test'
+                bat 'mvn test'
+                //sh 'mvn test'
             }
 //             看起來需額外安裝junit plugin 先略過
 //             post {
@@ -24,6 +25,11 @@ pipeline {
 //                     junit 'target/surefire-reports/*.xml'
 //                 }
 //             }
+        }
+        stage('Deliver') {
+            steps {
+                bat 'jenkins/scripts/deliver.bat'
+            }
         }
     }
 }
