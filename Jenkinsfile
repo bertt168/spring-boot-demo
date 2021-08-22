@@ -13,6 +13,9 @@ pipeline {
         }
         stage('Build') {
             steps {
+                echo 'clean package 先清除再打包'
+                echo '-DskipTests 跳過測試'
+                echo '-b 該引數表示讓Maven使用批處理模式構建專案'
                 //如果是mac
                 //sh 'mvn -B -DskipTests clean package'
 
