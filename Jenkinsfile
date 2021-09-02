@@ -21,5 +21,12 @@ pipeline {
                 echo 'hello from Pipeline'
             }
         }
+
+        stage('debug') {
+          steps {
+             bat 'echo "HAHA = $HAHA"'
+             bat 'env'
+          }
+        }
     }
 }
