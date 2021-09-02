@@ -15,7 +15,8 @@ pipeline {
         stage('hello world') {
             steps {
                 echo 'hello from Pipeline'
-                bat 'printenv'
+                bat 'set'
+                // mac sh 'printenv'
             }
         }
     }
