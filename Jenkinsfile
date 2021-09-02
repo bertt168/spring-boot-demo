@@ -14,7 +14,8 @@ pipeline {
     stages {
         stage('hello world') {
             when {
-                environment name: 'CC', value: 'clang'
+                branch 'master'
+                //environment name: 'CC', value: 'clang'
             }
             steps {
                 echo 'hello from Pipeline'
