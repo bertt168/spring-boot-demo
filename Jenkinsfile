@@ -9,24 +9,14 @@ pipeline {
 		//     }
 		// }
     environment {
-      HAHA = 'Yooo'
+        CC = 'clang'
     }
     stages {
         stage('hello world') {
-            when {
-                branch 'master'
-                environment name: HAHA, value: 'Yooo'
-            }
             steps {
                 echo 'hello from Pipeline'
+                bat 'printenv'
             }
-        }
-
-        stage('debug') {
-          steps {
-             bat 'echo "HAHA = $HAHA"'
-             bat 'env'
-          }
         }
     }
 }
