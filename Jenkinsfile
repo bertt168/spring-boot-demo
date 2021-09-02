@@ -12,11 +12,11 @@ pipeline {
       HAHA = 'Yooo'
     }
     stages {
-        when {
-    	    branch 'master'
-    			environment name: 'HAHA', value: 'Yooo'
-    	}
         stage('hello world') {
+            when {
+                branch 'master'
+                environment name: 'HAHA', value: 'Yooo'
+            }
             steps {
                 echo 'hello from Pipeline'
             }
