@@ -14,7 +14,7 @@ pipeline {
     stages {
         stage('hello world') {
             when {
-                branch 'master'
+                branch 'origin/master'
                 //environment name: 'CC', value: 'clang'
             }
             steps {
