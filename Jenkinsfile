@@ -15,7 +15,7 @@ pipeline {
         stage('hello world') {
             when {
                 branch 'master'
-                environment name: 'HAHA', value: 'Yooo'
+                environment name: HAHA, value: 'Yooo'
             }
             steps {
                 echo 'hello from Pipeline'
