@@ -12,7 +12,7 @@ pipeline {
         stage('hello world') {
             when {
                 expression {
-                        return ${GIT_BRANCH,fullName=false} == 'test';
+                        return GIT_BRANCH == 'test';
                 }
             }
             steps {
