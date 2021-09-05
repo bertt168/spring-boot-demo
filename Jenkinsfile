@@ -6,9 +6,11 @@ pipeline {
     }
     stages {
         stage('Build') {
-            steps {
-                echo 'Building..'
-            }
+            when {
+        	    expression {
+                  return GIT_BRANCH == 'origin/test';
+              }
+        	}
         }
         stage('Test') {
             parallel {
@@ -22,18 +24,8 @@ pipeline {
                         echo 'Testing..2'
                     }
                 }
-                stage('TEST3') {
-                    steps {
-                        echo 'Testing..3'
-                    }
-                }
             }
 
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
         }
     }
 }
