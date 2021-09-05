@@ -14,6 +14,9 @@ pipeline {
                         echo 'Testing..1'
                     }
                 }
+                when {
+                        echo '0'
+                }
                 stage('TEST2') {
                     steps {
                         echo 'Testing..2'
