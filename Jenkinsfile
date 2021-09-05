@@ -16,9 +16,21 @@ pipeline {
                         echo 'Testing..1'
                     }
                 }
-                stage('Stage2') {
-                    steps {
-                        echo 'Testing..2'
+                stages {
+                    stage('Stage2') {
+                        steps {
+                            echo 'Testing..2'
+                        }
+                    }
+                    stage('Stage2-1') {
+                        steps {
+                            echo 'Testing..2-1'
+                        }
+                    }
+                    stage('Stage2-2') {
+                        steps {
+                            echo 'Testing..2-2'
+                        }
                     }
                 }
             }
