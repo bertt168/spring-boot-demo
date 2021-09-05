@@ -8,17 +8,27 @@ pipeline {
         XX_PATH = '../'
     }
     stages {
-        stage('hello world') {
-            when {
-                environment name: 'XX_PATH', value: 'D://jenkins/'
-            }
-            steps {
-                echo 'hello from Pipeline'
-            }
-        }
-        stage('env') {
-            steps {
-                bat 'set'
+        stage('test parallel') {
+            parallel {
+                stage('Stage 1') {
+                    steps {
+                        echo "In Stage 1"
+                    }
+                }
+                stage('Stage 2') {
+                    stages {
+                        stage('Stage 2-1') {
+                            steps {
+                                echo "In Stage 2-1"
+                            }
+                        }
+                        stage('Stage 2-2') {
+                            steps {
+                                echo "In Stage 2-2"
+                            }
+                        }
+                    }
+                }
             }
         }
     }
