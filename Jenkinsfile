@@ -6,20 +6,24 @@ pipeline {
         maven 'maven'
         jdk 'jdk11'
     }
-    stages { // 運行，為由上到下。當然也有進階的應用是可以平行處理的
-        stage('Practice') {
-            parallel {
-                stage('Stage1') {
-                    steps {
-                        echo 'Testing..1'
-                    }
+    agent none
+        stages {
+            stage('1') {
+                steps {
+                    echo 'Hello World'
                 }
-                stage('Stage2-2') {
-                    steps {
-                        echo 'Testing..2'
-                    }
+            }
+            stage('2') {
+                steps {
+                    echo "Hello World"
+                }
+                when {
+                    beforeAgent true
+                    branch 'i19'
+                }
+                steps {
+                    echo 'Hello World'
                 }
             }
         }
-    }
 }
