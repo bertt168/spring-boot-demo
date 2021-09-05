@@ -13,11 +13,4 @@ pipeline {
             }
         }
     }
-    stage{
-        stage('test'){
-            stage{
-                echo 'test'
-            }
-        }
-    }
 }
