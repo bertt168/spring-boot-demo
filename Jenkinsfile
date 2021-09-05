@@ -12,7 +12,7 @@ pipeline {
         stage('hello world') {
             steps {
                 echo 'hello from hello2'
-		echo '我是七彩內褲yiyu'
+		        echo '我是七彩內褲水球'
 
             }
         }
