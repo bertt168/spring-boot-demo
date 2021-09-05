@@ -6,13 +6,29 @@ pipeline {
         maven 'maven'
         jdk 'jdk11'
     }
-    stages { //是一個集合，裡面可以包含很多個stage
-        stage('practice') {
+    stages { // 運行，為由上到下。當然也有進階的應用是可以平行處理的
+        stage('Build') {
             steps {
-                echo 'hello from Pipeline'
+                echo 'Building..'
             }
-            steps{
-                echo 'test'
+        }
+        stage('Test') {
+            parallel {
+                stage('TEST1') {
+                    steps {
+                        echo 'Testing..1'
+                    }
+                }
+                stage('TEST2') {
+                    steps {
+                        echo 'Testing..2'
+                    }
+                }
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
             }
         }
     }
