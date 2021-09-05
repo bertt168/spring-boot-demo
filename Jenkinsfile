@@ -16,6 +16,7 @@ pipeline {
                 branch 'master'
             }
             steps {
+                echo '聖博大帥哥！'
                 echo 'clean package 先清除再打包'
                 echo '-DskipTests 跳過測試'
                 echo '-b 該引數表示讓Maven使用批處理模式構建專案'
