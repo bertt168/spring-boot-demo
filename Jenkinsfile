@@ -14,10 +14,6 @@ pipeline {
                         echo 'Testing..1'
                     }
                 }
-                when {
-                    beforeAgent true
-                    branch 'i19'
-                }
                 stage('Stage2-2') {
                     steps {
                         echo 'Testing..2'
