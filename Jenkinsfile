@@ -12,6 +12,12 @@ pipeline {
         stage('Practice') {
             parallel {
                 stage('Stage 1') {
+                    when {
+        expression {
+          return GIT_BRANCH == 'origin/test';
+        }
+            environment name: 'CC', value: 'clang'
+        }
                     steps {
                         echo "In Stage 1"
                     }
