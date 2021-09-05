@@ -20,5 +20,10 @@ pipeline {
                 bat 'set'
             }
         }
+        stage('branch') {
+            steps {
+                echo GIT_BRANCH
+            }
+        }
     }
 }
