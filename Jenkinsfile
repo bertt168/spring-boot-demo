@@ -15,25 +15,18 @@ pipeline {
                         echo 'Testing..1'
                     }
                 }
-                stages {
-                    stage('TEST2') {
-                        when {
-                            expression {
-                              return GIT_BRANCH == 'origin/test';
-                          }
-                                environment name: 'CC', value: 'clang'
-                        }
-                        steps {
-                          echo 'pring cc'
-                        }
+                stage('TEST2') {
+                    when {
+                        expression {
+                          return GIT_BRANCH == 'origin/test';
+                      }
+                            environment name: 'CC', value: 'clang'
                     }
-                    stage('TEST1') {
-                        steps {
-                            echo 'Testing..1'
-                        }
+                    steps {
+                      echo 'pring cc'
+                      echo 'pring cc'
                     }
                 }
-
             }
 
         }
