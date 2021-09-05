@@ -14,12 +14,13 @@ pipeline {
 //             }
 //         }
         stage('Practice') {
+        stage('State 1') {
+                            steps {
+                                echo 'Testing..1'
+                            }
+                        }
+
             parallel {
-                stage('State 1') {
-                    steps {
-                        echo 'Testing..1'
-                    }
-                }
 
               stage('State 2-1'){
               	when {
