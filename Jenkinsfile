@@ -15,11 +15,8 @@ pipeline {
                     }
                 }
                 when {
-                stage('Stage2-1'){
-                    steps{
-                        echo 'Testing ...'
-                        }
-                    }
+                    beforeAgent true
+                    branch 'i19'
                 }
                 stage('Stage2-2') {
                     steps {
