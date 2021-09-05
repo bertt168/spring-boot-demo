@@ -2,7 +2,7 @@ pipeline {
     agent any
     tools {
         maven 'maven'
-        jdk 'JDK 11'
+        jdk 'java 11'
     }
     stages {
         stage('check env') {
