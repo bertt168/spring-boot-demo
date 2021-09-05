@@ -9,11 +9,23 @@ pipeline {
 		//     }
 		// }
     stages { //是一個集合，裡面可以包含很多個stage
-        stage('hello world') {
+        stage('Stage1') {
             steps {
-                echo 'hello from hello2'
-		        echo '我是七彩內褲水球'
-
+                echo 'Stage1-水球'
+            }
+        }
+        stage('Stage2') {
+            parallel {
+                stage('Stage 2-1') {
+                    steps {
+                        echo 'Stage 2-1-水球'
+                    }
+                }
+                stage('Stage 2-2') {
+                    steps {
+                        echo 'Stage 2-2-水球'
+                    }
+                }
             }
         }
     }
