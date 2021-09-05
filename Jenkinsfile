@@ -8,7 +8,7 @@ pipeline {
         XX_PATH = '../'
     }
     stages {
-        stage('test parallel') {
+        stage('小練習') {
             parallel {
                 stage('Stage 1') {
                     steps {
