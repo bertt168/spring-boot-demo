@@ -8,6 +8,9 @@ pipeline {
 		//         label 'ec2'
 		//     }
 		// }
+    environment {
+      CC = 'clang'
+    }
     stages { //是一個集合，裡面可以包含很多個stage
         stage('hello world') {
             when {
@@ -17,13 +20,18 @@ pipeline {
             }
             steps {
                 echo 'hello world'
-                bat 'set'
             }
         }
-        stage('branch') {
-            steps {
-                echo GIT_BRANCH
-            }
+        stage('xx'){
+        	when {
+        	    expression {
+                  return GIT_BRANCH == 'origin/test';
+              }
+        			environment name: 'CC ', value: 'clang'
+        	}
+        	steps {
+        	  echo 'pring cc'
+          }
         }
     }
 }
