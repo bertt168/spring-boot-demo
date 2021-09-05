@@ -7,18 +7,19 @@ pipeline {
         jdk 'jdk11'
     }
     stages { // 運行，為由上到下。當然也有進階的應用是可以平行處理的
-
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
-                        stage('TEST2') {
-                            steps {
-                                echo 'Testing..2'
-                            }
-                        }
+        stage('Test') {
+            parallel {
+                stage('TEST1') {
+                    steps {
+                        echo 'Testing..1'
                     }
                 }
+                stage('TEST2') {
+                    steps {
+                        echo 'Testing..2'
+                    }
+                }
+            }
+        }
     }
 }
