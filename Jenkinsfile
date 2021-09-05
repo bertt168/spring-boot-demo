@@ -5,7 +5,12 @@ pipeline {
         jdk 'java 11'
     }
     stages {
-        stage('Practice') {
+        stage('Build') {
+            steps {
+                echo 'Building..'
+            }
+        }
+        stage('Test') {
             parallel {
                 stage('TEST1') {
                     steps {
@@ -16,12 +21,12 @@ pipeline {
                     steps {
                         echo 'Testing..2'
                     }
-                    stage('TEST3') {
-                        steps {
-                            echo 'Testing..3'
-                        }
-                    }
                 }
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
             }
         }
     }
