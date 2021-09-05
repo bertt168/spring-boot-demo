@@ -7,9 +7,12 @@ pipeline {
         jdk 'jdk11'
     }
     stages { //是一個集合，裡面可以包含很多個stage
-        stage('hello world') {
+        stage('practice') {
             steps {
                 echo 'hello from Pipeline'
+            }
+            stage{
+                echo 'test'
             }
         }
     }
