@@ -22,12 +22,13 @@ pipeline {
                         echo 'Testing..2'
                     }
                 }
-            }
-            stage('TEST3') {
-                steps {
-                    echo 'Testing..3'
+                stage('TEST3') {
+                    steps {
+                        echo 'Testing..3'
+                    }
                 }
             }
+
         }
         stage('Deploy') {
             steps {
