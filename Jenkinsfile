@@ -7,8 +7,8 @@ pipeline {
     stages {
         stage('check env') {
             steps {
-                bat 'mvn -v'
-                bat 'java -version'
+                sh 'mvn -v'
+                sh 'java -version'
             }
         }
         stage('Build') {
@@ -22,8 +22,8 @@ pipeline {
         }
         stage('Test') {
             steps {
-                bat 'mvn test'
-                //sh 'mvn test'
+//                 bat 'mvn test'
+                sh 'mvn test'
             }
             post {
                 always {
@@ -34,8 +34,8 @@ pipeline {
 
         stage('Deliver') {
             steps {
-                //sh './jenkins/scripts/deliver.sh'
-                bat 'jenkins/scripts/deliver.bat'
+                sh './jenkins/scripts/deliver.sh'
+//                 bat 'jenkins/scripts/deliver.bat'
             }
         }
     }
