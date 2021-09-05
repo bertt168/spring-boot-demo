@@ -12,6 +12,7 @@ pipeline {
         stage('hello world') {
             steps {
                 echo 'hello world'
+                bat 'set'
             }
         }
     }
