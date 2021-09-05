@@ -11,7 +11,7 @@ pipeline {
     stages { //是一個集合，裡面可以包含很多個stage
         stage('hello world') {
             steps {
-                echo 'hello from Pipeline'
+                echo 'hello from hello'
             }
         }
     }
