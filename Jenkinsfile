@@ -11,14 +11,14 @@ pipeline {
     stages { //是一個集合，裡面可以包含很多個stage
         stage('Practice') {
             parallel {
-                stage('Stage 1-水球') {
+                stage('🐆Stage 1') {
                     steps {
                         echo "In Stage 1"
                     }
                 }
-                stage('Stage 2-水球') {
+                stage('🐬Stage 2') {
                     stages {
-                        stage('Stage 2-1-水球') {
+                        stage('🦁️Stage 2-1') {
                             when {
                                 expression {
                                     return GIT_BRANCH == 'origin/test';
@@ -29,7 +29,7 @@ pipeline {
                                 echo "In Stage 2-1"
                             }
                         }
-                        stage('Stage 2-2-水球') {
+                        stage('🐯Stage 2-2') {
                             steps {
                                 echo "In Stage 2-2"
                             }
