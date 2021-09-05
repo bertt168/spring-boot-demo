@@ -23,6 +23,11 @@ pipeline {
                     }
                 }
             }
+            stage('TEST3') {
+                steps {
+                    echo 'Testing..3'
+                }
+            }
         }
         stage('Deploy') {
             steps {
