@@ -9,21 +9,25 @@ pipeline {
 		//     }
 		// }
     stages { //是一個集合，裡面可以包含很多個stage
-        stage('Stage1') {
-            steps {
-                echo 'Stage1-水球'
-            }
-        }
-        stage('Stage2') {
+        stage('Practice') {
             parallel {
-                stage('Stage 2-1') {
+                stage('Stage 1') {
                     steps {
-                        echo 'Stage 2-1-水球'
+                        echo "In Stage 1"
                     }
                 }
-                stage('Stage 2-2') {
-                    steps {
-                        echo 'Stage 2-2-水球'
+                stage('Stage 2') {
+                    stages {
+                        stage('Stage 2-1') {
+                            steps {
+                                echo "In Stage 2-1"
+                            }
+                        }
+                        stage('Stage 2-2') {
+                            steps {
+                                echo "In Stage 2-2"
+                            }
+                        }
                     }
                 }
             }
