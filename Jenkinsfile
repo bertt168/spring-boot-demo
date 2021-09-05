@@ -18,6 +18,9 @@ pipeline {
                 stage('Stage 2') {
                     stages {
                         stage('Stage 2-1') {
+                            when {
+                                environment name: 'XX_PATH', value: 'D://jenkins/'
+                            }
                             steps {
                                 echo "In Stage 2-1"
                             }
