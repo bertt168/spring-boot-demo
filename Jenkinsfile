@@ -9,28 +9,22 @@ pipeline {
     }
     stages { // 運行，為由上到下。當然也有進階的應用是可以平行處理的
 
-        stage('Start') {
+        stage('Practice') {
             parallel {
-                stage('Practice') {
+                stage('Stage1') {
                     steps {
-
+                        echo 'Testing..1'
                     }
                 }
                 stage('Stage2') {
                     steps {
+                        echo 'Testing..2'
                         stage('Stage2-1'){
-
                         }
                         stage('Stage2-2'){
-
                         }
                     }
                 }
-            }
-        }
-        stage('End') {
-            steps {
-                echo 'Deploying....'
             }
         }
     }
