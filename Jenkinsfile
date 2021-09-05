@@ -17,6 +17,9 @@ pipeline {
                     steps {
                         echo 'Testing..2'
                     }
+                    when{
+                        branch 'i19'
+                    }
                 }
         }
     }
