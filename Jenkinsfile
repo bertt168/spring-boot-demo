@@ -24,9 +24,9 @@ pipeline {
                     steps ('State 2-1'){
                         echo 'Testing..2'
                     }
-                    steps ('State 2-2'){
-                                            echo 'Testing..2'
-                                        }
+//                     steps ('State 2-2'){
+//                            echo 'Testing..2'
+//                     }
                 }
             }
         }
