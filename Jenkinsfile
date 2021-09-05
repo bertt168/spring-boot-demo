@@ -16,19 +16,27 @@ pipeline {
                     }
                 }
                 stage('TEST2') {
-                    when {
-                        expression {
-                          return GIT_BRANCH == 'origin/test';
-                      }
-                            environment name: 'CC', value: 'clang'
-                    }
-                    steps {
-                      echo 'pring cc'
-                      echo 'pring cc'
+                    stages {
+                        stage('stage1') {
+                            when {
+                                expression {
+                                  return GIT_BRANCH == 'origin/test';
+                              }
+                                    environment name: 'CC', value: 'clang'
+                            }
+                            steps {
+                              echo 'pring cc'
+                              echo 'pring cc'
+                            }
+                        }
+                        stage('TEST1') {
+                            steps {
+                                echo 'Testing..1'
+                            }
+                        }
                     }
                 }
             }
-
         }
     }
 }
