@@ -19,7 +19,7 @@ pipeline {
                 }
             }
             steps {
-                echo 'hello world'
+                echo 'hello world2'
             }
         }
         stage('xx'){
