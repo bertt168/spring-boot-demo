@@ -21,22 +21,28 @@ pipeline {
                     }
                 }
 
-              stage('State 2-1'){
-              	when {
-              	    expression {
-                        return GIT_BRANCH == 'origin/test';
-                    }
-              			environment name: 'CC', value: 'clang'
-              	}
-              	steps {
-              	  echo 'pring cc'
-                }
-              }
 
-                stage('State 2-2') {
-                    steps ('State 2-1'){
-                        echo 'Testing..2'
-                    }
+
+                stage('State 2') {
+                   stage('State 2-1'){
+                                 	when {
+                                 	    expression {
+                                           return GIT_BRANCH == 'origin/test';
+                                       }
+                                 			environment name: 'CC', value: 'clang'
+                                 	}
+                                 	steps {
+                                 	  echo 'pring cc'
+                                   }
+                     }
+                             stage('State 2-2') {
+                                 steps {
+                                     echo 'Deploying....'
+                                 }
+                             }
+//                     steps ('State 2-2'){
+//                         echo 'Testing..2'
+//                     }
 //                     steps ('State 2-2'){
 //                            echo 'Testing..2'
 //                     }
