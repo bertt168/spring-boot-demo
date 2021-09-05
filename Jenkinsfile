@@ -8,20 +8,28 @@ pipeline {
         jdk 'JDK 1.8'
     }
     stages { // 運行，為由上到下。當然也有進階的應用是可以平行處理的
-        stage('Practice') {
+        stage('Build') {
+            steps {
+                echo 'Building..'
+            }
+        }
+        stage('Test') {
             parallel {
-                stage('Stage1') {
+                stage('TEST1') {
                     steps {
                         echo 'Testing..1'
                     }
                 }
-                stages {
-                    stage('Stage2') {
-                        steps {
-                            echo 'Testing..2'
-                        }
+                stage('TEST2') {
+                    steps {
+                        echo 'Testing..2'
                     }
                 }
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
             }
         }
     }
