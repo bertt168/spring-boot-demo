@@ -26,8 +26,8 @@ pipeline {
         	when {
         	    expression {
                   return GIT_BRANCH == 'origin/test';
-              }
-        			environment name: 'CC ', value: 'clang'
+                }
+                environment name: 'CC', value: 'clang'
         	}
         	steps {
         	  echo 'pring cc'
