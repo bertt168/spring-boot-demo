@@ -18,12 +18,12 @@ pipeline {
                 stage('TEST2') {
                     stages {
                         stage('stage1') {
-                            when {
-                                expression {
-                                  return GIT_BRANCH == 'origin/test';
-                              }
-                                    environment name: 'CC', value: 'clang'
-                            }
+//                             when {
+//                                 expression {
+//                                   return GIT_BRANCH == 'origin/test';
+//                               }
+//                                     environment name: 'CC', value: 'clang'
+//                             }
                             steps {
                               echo 'pring cc'
                               echo 'pring cc'
