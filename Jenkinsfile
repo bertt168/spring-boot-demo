@@ -8,28 +8,28 @@ pipeline {
       CC = 'clang'
     }
     stages {
-        stage('Test') {
+        stage('Practice') {
             parallel {
-                stage('TEST1') {
+                stage('Stage 1') {
                     steps {
                         echo 'Testing..1'
                     }
                 }
-                stage('TEST2') {
+                stage('Stage 2') {
                     stages {
-                        stage('stage1') {
-//                             when {
-//                                 expression {
-//                                   return GIT_BRANCH == 'origin/test';
-//                               }
-//                                     environment name: 'CC', value: 'clang'
-//                             }
+                        stage('Stage 2-1') {
+                            when {
+                                expression {
+                                  return GIT_BRANCH == 'origin/test';
+                              }
+                                    environment name: 'CC', value: 'aa'
+                            }
                             steps {
                               echo 'pring cc'
                               echo 'pring cc'
                             }
                         }
-                        stage('TEST1') {
+                        stage('Stage 2-2') {
                             steps {
                                 echo 'Testing..1'
                             }
