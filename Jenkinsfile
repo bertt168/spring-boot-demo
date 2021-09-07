@@ -12,6 +12,9 @@ pipeline {
                 stage('Stage 2') {
                     stages {
                         stage('Stage 2-1') {
+                            when {
+                                branch 'master'
+                            }
                             steps {
                                 echo "In Stage 2-1"
                                 sleep(5)
