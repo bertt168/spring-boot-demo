@@ -10,7 +10,7 @@ pipeline {
                 echo '1'
             }
         }
-        stages {
+        stage {
             stage {
                 steps {
                     echo '2-1'
