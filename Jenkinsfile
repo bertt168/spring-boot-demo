@@ -1,35 +1,44 @@
-//Jenkinsfile (Declarative Pipeline)
 pipeline {
     agent any
-		tools {
-				// 工具名稱必須在Jenkins 管理Jenkins → 全域性工具設定中預設定。
-				// maven name 跟 jdk mane 都是抓剛剛在 Global Tool Configuration 設定的name
+    tools {
         maven 'Maven 3.8.2'
         jdk 'jdk-15.0.2'
     }
-    stages { // 運行，為由上到下。當然也有進階的應用是可以平行處理的
+    stages {
+        stage('check env') {
+            steps {
+                sh 'mvn -v'
+                sh 'java -version'
+            }
+        }
         stage('Build') {
             steps {
-                echo 'Building..'
+                echo 'clean package' //先清除再打包
+                echo '-DskipTests' //跳過測試
+                echo '-b' //該引數表示讓Maven使用批處理模式構建專案
+                //如果是mac
+                //sh 'mvn -B -DskipTests clean package'
+
+                //如果是window
+                sh 'mvn -B -DskipTests clean package'
             }
         }
         stage('Test') {
-            parallel {
-                stage('TEST1') {
-                    steps {
-                        echo 'Testing..1'
-                    }
-                }
-                stage('TEST2') {
-                    steps {
-                        echo 'Testing..2'
-                    }
+            steps {
+                sh 'mvn test'
+                //sh 'mvn test'
+            }
+            post {
+                always {
+                    junit 'target/surefire-reports/*.xml'
                 }
             }
         }
-        stage('Deploy') {
+
+        stage('Deliver') {
             steps {
-                echo 'Deploying....'
+                //sh './jenkins/scripts/deliver.sh'
+                sh 'jenkins/scripts/deliver.sh'
             }
         }
     }
